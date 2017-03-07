@@ -1,0 +1,2 @@
+# CubingLibrary
+Rubics cube library
