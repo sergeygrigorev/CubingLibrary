@@ -18,8 +18,9 @@ public class Main {
     public static void main(String[] args) {
         //CubieCube c = new CubieCube(new Algorithm("R2 U R U R' U' R' U' R' U R'"));
         WcaScrambler scr = new WcaScrambler();
-        scr.setSeed(123);
+//        scr.setSeed(124);
         Algorithm a = scr.generate();
+        a = new Algorithm("R' F R F' U");
         System.out.println(a);
         System.out.println();
 

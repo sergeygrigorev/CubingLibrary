@@ -106,6 +106,8 @@ public class BlindChainSolver {
     public CornerSticker[] getCornerFlips() {
         ArrayList<CornerSticker> res = new ArrayList<CornerSticker>();
         for (CornerPosition p : CornerPosition.values()) {
+            if (p == cornerBufferPosition)
+                continue;
             Corner c = cube.get(p);
             if (c.getPosition() == p && c.getFlip() != CornerFlip.NRM)
                 res.add(CornerSticker.values()[CornerSticker.valueOf(p.name()).ordinal() + c.getFlip().ordinal()]);
@@ -116,6 +118,8 @@ public class BlindChainSolver {
     public EdgeSticker[] getEdgeFlips() {
         ArrayList<EdgeSticker> res = new ArrayList<EdgeSticker>();
         for (EdgePosition p : EdgePosition.values()) {
+            if (p == edgeBufferPosition)
+                continue;
             Edge c = cube.get(p);
             if (c.getPosition() == p && c.getFlip() != EdgeFlip.NM)
                 res.add(EdgeSticker.values()[EdgeSticker.valueOf(p.name()).ordinal() + c.getFlip().ordinal()]);
