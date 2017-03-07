@@ -208,9 +208,19 @@ public class CubieCube implements ICube {
         return corners[position.ordinal()];
     }
 
+
+    public Corner getCorner(int position) {
+        return corners[position];
+    }
+
     @Override
     public Edge get(EdgePosition position) {
         return edges[position.ordinal()];
+    }
+
+
+    public Edge getEdge(int position) {
+        return edges[position];
     }
 
     @Override
@@ -218,10 +228,10 @@ public class CubieCube implements ICube {
         StringBuilder s = new StringBuilder();
         for (CornerPosition c : CornerPosition.values())
             if(!(corners[c.ordinal()].getPosition() == c && corners[c.ordinal()].getFlip() == CornerFlip.NRM))
-                s.append(c.toString()).append(" - [").append(corners[c.ordinal()]).append("]\n");
+                s.append(c.toString()).append(" - ").append(corners[c.ordinal()]).append("\n");
         for (EdgePosition e : EdgePosition.values())
             if (!(edges[e.ordinal()].getPosition() == e && edges[e.ordinal()].getFlip() == EdgeFlip.NM))
-                s.append(e.toString()).append(" - [").append(edges[e.ordinal()]).append("]\n");
+                s.append(e.toString()).append(" - ").append(edges[e.ordinal()]).append("\n");
         return s.length() > 0 ? s.toString().trim() : "Solved cube";
     }
 }
