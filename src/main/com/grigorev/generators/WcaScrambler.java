@@ -13,26 +13,35 @@ import java.util.Random;
 public class WcaScrambler implements IGenerator {
 
     private Random r = new Random();
+    private long seed;
     public static final int WCA_SCRAMBLE_LENGTH = 25;
+
+    public WcaScrambler() {
+        seed = r.nextLong();
+        r.setSeed(seed);
+    }
+
+    public WcaScrambler(long seed) {
+        this.seed = seed;
+        r.setSeed(seed);
+    }
 
     @Override
     public void setSeed(long seed) {
-        r = new Random(seed);
+        this.seed = seed;
+        r.setSeed(seed);
+    }
+
+    @Override
+    public long getSeed() {
+        return seed;
     }
 
     @Override
     public Algorithm generate() {
         Algorithm a = new Algorithm();
-        Move prev = null;
-        for (int i = 0; i < WCA_SCRAMBLE_LENGTH; i++) {
-            Move curr = new Move(MoveType.values()[r.nextInt(6)], MoveDirection.values()[1 + r.nextInt(3)]);
-            if (prev != null && prev.type == curr.type) {
-                i--;
-                continue;
-            }
-            prev = curr;
-            a.add(curr);
-        }
+        while (a.length() < WCA_SCRAMBLE_LENGTH)
+            a.add(new Move(MoveType.values()[r.nextInt(6)], MoveDirection.values()[1 + r.nextInt(3)]));
         return a;
     }
 

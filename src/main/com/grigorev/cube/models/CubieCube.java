@@ -204,7 +204,7 @@ public class CubieCube implements ICube {
     }
 
     @Override
-    public Corner get(CornerPosition position) {
+    public Corner getCorner(CornerPosition position) {
         return corners[position.ordinal()];
     }
 
@@ -214,7 +214,7 @@ public class CubieCube implements ICube {
     }
 
     @Override
-    public Edge get(EdgePosition position) {
+    public Edge getEdge(EdgePosition position) {
         return edges[position.ordinal()];
     }
 

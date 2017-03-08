@@ -55,15 +55,25 @@ public class Algorithm {
             }
         }
         for (int i = 0; i < algo.size() - 1; i++) {
-            if (algo.get(i).type != algo.get(i + 1).type)
+            if (i < 0)
                 continue;
+            if (algo.get(i).type != algo.get(i + 1).type) {
+                int x = algo.get(i).type.ordinal();
+                int y = algo.get(i + 1).type.ordinal();
+                if (x / 2 == y / 2 && x % 2 > y % 2) {
+                    Move tmp = algo.get(i);
+                    algo.set(i, algo.get(i + 1));
+                    algo.set(i + 1, tmp);
+                    i -= 2;
+                }
+                continue;
+            }
             Move newMove = algo.get(i).add(algo.get(i + 1));
             algo.remove(i);
             algo.remove(i);
             i--;
-            if (newMove.isNull()) {
-                if (i >= 0)
-                    i--;
+            if (newMove.isNone()) {
+                i--;
                 continue;
             }
             algo.add(i + 1, newMove);

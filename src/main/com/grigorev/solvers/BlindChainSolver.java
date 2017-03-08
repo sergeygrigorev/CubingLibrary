@@ -7,7 +7,6 @@ import main.com.grigorev.cube.models.CubieCube;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -108,7 +107,7 @@ public class BlindChainSolver {
         for (CornerPosition p : CornerPosition.values()) {
             if (p == cornerBufferPosition)
                 continue;
-            Corner c = cube.get(p);
+            Corner c = cube.getCorner(p);
             if (c.getPosition() == p && c.getFlip() != CornerFlip.NRM)
                 res.add(CornerSticker.values()[CornerSticker.valueOf(p.name()).ordinal() + c.getFlip().ordinal()]);
         }
@@ -120,7 +119,7 @@ public class BlindChainSolver {
         for (EdgePosition p : EdgePosition.values()) {
             if (p == edgeBufferPosition)
                 continue;
-            Edge c = cube.get(p);
+            Edge c = cube.getEdge(p);
             if (c.getPosition() == p && c.getFlip() != EdgeFlip.NM)
                 res.add(EdgeSticker.values()[EdgeSticker.valueOf(p.name()).ordinal() + c.getFlip().ordinal()]);
         }

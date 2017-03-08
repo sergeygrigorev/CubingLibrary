@@ -8,6 +8,8 @@ import main.com.grigorev.cube.helpers.Algorithm;
 public interface IGenerator {
     void setSeed(long seed);
 
+    long getSeed();
+
     Algorithm generate();
 
     Algorithm[] generate(int count);

@@ -19,9 +19,9 @@ public interface ICube {
 
     void setSolvedState();
 
-    Corner get(CornerPosition position);
+    Corner getCorner(CornerPosition position);
 
-    Edge get(EdgePosition position);
+    Edge getEdge(EdgePosition position);
 
 
 

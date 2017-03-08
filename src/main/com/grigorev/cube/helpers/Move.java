@@ -38,7 +38,7 @@ public class Move {
         direction = moveDirection;
     }
 
-    public boolean isNull() {
+    public boolean isNone() {
         return direction == MoveDirection.None;
     }
 
